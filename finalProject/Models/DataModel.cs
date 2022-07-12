@@ -7,6 +7,6 @@ namespace finalProject.Models
 {
     public class DataModel
     {
-        public Object data;
+        public string data { get; set; }
     }
 }

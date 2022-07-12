@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace finalProject
@@ -27,7 +28,7 @@ namespace finalProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<IHttpClient, HttpClient>();
+            services.AddSingleton<IHttpClient, finalProject.Services.HttpClient>();
             
         }
 

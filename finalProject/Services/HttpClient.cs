@@ -12,32 +12,26 @@ namespace finalProject.Services
 {
     public class HttpClient : IHttpClient
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
 
-        public HttpClient(IHttpClientFactory httpClientFactory)
+        public DataModel Entries { get; set; }
+
+        public async Task<String> GetAsync()
         {
-            _httpClientFactory = httpClientFactory;
-        }
-
-        public IEnumerable<DataModel> Entries { get; set; }
-
-        public async Task<IEnumerable<DataModel>> GetAsync()
-        {
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "https://api.publicapis.org/");
-
-            var httpClient = _httpClientFactory.CreateClient();
-            var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-
-            if(httpResponseMessage.IsSuccessStatusCode)
-            {
-                using var contentStream = await httpResponseMessage.Content.ReadAsStreamAsync();
-                Entries = await JsonSerializer.DeserializeAsync<IEnumerable<DataModel>>(contentStream);
-                return Entries;
-            }
-
-            //If you reach this, it didn't work
-            return null;
             
+                // Call asynchronous network methods in a try/catch block to handle exceptions.
+                try
+                {
+                    string responseBody = await client.GetStringAsync("https://api.publicapis.org/entries");
+
+                    return responseBody;
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", e.Message);
+                    return null;
+                }
         }
     }
 }
