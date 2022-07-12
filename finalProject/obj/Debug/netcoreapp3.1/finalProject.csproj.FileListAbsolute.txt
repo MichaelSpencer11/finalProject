@@ -36,3 +36,11 @@ C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\obj\Debug\netcore
 C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\obj\Debug\netcoreapp3.1\finalProject.pdb
 C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\obj\Debug\netcoreapp3.1\finalProject.genruntimeconfig.cache
 C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\obj\Debug\netcoreapp3.1\finalProject.csproj.CopyComplete
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\obj\Debug\netcoreapp3.1\finalProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\MichaelSpencer\source\repos\finalProject\finalProject\bin\Debug\netcoreapp3.1\System.Text.Json.dll

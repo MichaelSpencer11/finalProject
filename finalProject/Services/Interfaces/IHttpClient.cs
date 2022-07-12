@@ -6,8 +6,8 @@ using finalProject.Models;
 
 namespace finalProject.Services.Interfaces
 {
-    interface IHttpClient
+    public interface IHttpClient
     {
-        Task<DataModel> GetAsync();
+        Task<IEnumerable<DataModel>> GetAsync();
     }
 }
