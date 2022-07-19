@@ -6,32 +6,38 @@ using finalProject.Models;
 using finalProject.Services.Interfaces;
 using System.Net.Http;
 using System.Text.Json;
-
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace finalProject.Services
 {
     public class HttpClient : IHttpClient
     {
-        private readonly System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+        //private readonly System.Net.Http.HttpClient client = new System.Net.Http.HttpClient();
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public DataModel Entries { get; set; }
+        public HttpClient(IHttpClientFactory httpClientFactory) =>
+        _httpClientFactory = httpClientFactory;
 
-        public async Task<String> GetAsync()
+        public async Task<Stream> GetAsync()
         {
-            
-                // Call asynchronous network methods in a try/catch block to handle exceptions.
-                try
-                {
-                    string responseBody = await client.GetStringAsync("https://api.publicapis.org/entries");
+            Entries entries = new Entries();
+            var httpRequestMessage = new HttpRequestMessage(
+            HttpMethod.Get,
+            "https://api.publicapis.org/entries");
 
-                    return responseBody;
-                }
-                catch (HttpRequestException e)
-                {
-                    Console.WriteLine("\nException Caught!");
-                    Console.WriteLine("Message :{0} ", e.Message);
-                    return null;
-                }
+            var httpClient = _httpClientFactory.CreateClient();
+            var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<Entries>(httpResponseMessage.Content.ReadAsStreamAsync().Result);
+                
+                
+            }
+
+            return null;
         }
     }
 }

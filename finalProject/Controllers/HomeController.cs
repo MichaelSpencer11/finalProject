@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace finalProject.Controllers
-{
+{   
+    [ApiController]
+    [Produces("application/json")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,27 +26,31 @@ namespace finalProject.Controllers
 
         }
 
+        [Route("index")]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Route("privacy")]
         public IActionResult Privacy()
         {
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        [Route("error")]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet]
-        [Route("getData")]
+        [Route("getdata")]
         public async Task<IActionResult> GetData()
         {
+            
             var data = await _service.GetAsync();
+            //string jsonString = JsonSerializer.Serialize(data);
 
             return Ok(data);
         }
