@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +7,9 @@ namespace finalProject.Models
 {
     public class Entries
     {
-        public ArrayList entries { get; set; }
+        public List<Entry> entries { get; set; }
 
     }
+
+
 }

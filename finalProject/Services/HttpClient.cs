@@ -20,7 +20,7 @@ namespace finalProject.Services
         public HttpClient(IHttpClientFactory httpClientFactory) =>
         _httpClientFactory = httpClientFactory;
 
-        public async Task<Stream> GetAsync()
+        public async Task<Entries> GetAsync()
         {
             Entries entries = new Entries();
             var httpRequestMessage = new HttpRequestMessage(
@@ -32,12 +32,12 @@ namespace finalProject.Services
 
             if (httpResponseMessage.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<Entries>(httpResponseMessage.Content.ReadAsStreamAsync().Result);
+                entries =  JsonConvert.DeserializeObject<Entries>(httpResponseMessage.Content.ReadAsStringAsync().Result);
                 
                 
             }
 
-            return null;
+            return entries;
         }
     }
 }

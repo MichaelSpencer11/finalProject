@@ -11,5 +11,6 @@ namespace finalProject.Models
         public string Description { get; set; }
         public bool HTTPS { get; set; }
         public string Cors { get; set; }
+        public string Category { get; set; }
     }
 }
